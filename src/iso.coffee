@@ -319,3 +319,43 @@ class Iso
 $ ->
   target = document.querySelector '.js-calendar-graph'
   iso = new Iso target
+
+
+pridifyRectangles = ->
+  GH = [
+    '#EEEEEE'
+    '#D6E685'
+    '#8CC665'
+    '#44A340'
+    '#1E6823'
+  ]
+  CO = [
+    '#AE81FF'
+    '#66D9EF'
+    '#E6DB74'
+    '#EEEEEE'
+    '#F92672'
+    '#A6E22E'
+    '#FD971F'
+  ]
+  graph = document.getElementsByClassName('js-calendar-graph-svg')[0]
+  days = [].slice.call(graph.getElementsByTagName('rect'), 0)
+  days.forEach (rect) ->
+    switch rect.getAttribute('fill').toUpperCase()
+      when GH[0]
+        rect.setAttribute 'fill', CO[3]
+      # yellow
+      when GH[1]
+        rect.setAttribute 'fill', CO[Math.floor(Math.random() * 3)]
+      # purple || pink
+      when GH[2]
+        rect.setAttribute 'fill', CO[4]
+      # green
+      when GH[3]
+        rect.setAttribute 'fill', CO[5]
+      # blue
+      when GH[4]
+        rect.setAttribute 'fill', CO[6]
+      # purple
+    return
+  return
