@@ -1,10 +1,12 @@
 class Iso
   COLORS = [
-    new obelisk.CubeColor().getByHorizontalColor(0xeeeeee),
-    new obelisk.CubeColor().getByHorizontalColor(0xd6e685),
-    new obelisk.CubeColor().getByHorizontalColor(0x8cc665),
-    new obelisk.CubeColor().getByHorizontalColor(0x44a340),
-    new obelisk.CubeColor().getByHorizontalColor(0x1e6823)
+    new obelisk.CubeColor().getByHorizontalColor(0x272822),
+    new obelisk.CubeColor().getByHorizontalColor(0x66D9EF),
+    new obelisk.CubeColor().getByHorizontalColor(0xF92672),
+    new obelisk.CubeColor().getByHorizontalColor(0xA6E22E),
+    new obelisk.CubeColor().getByHorizontalColor(0xFD971F),
+    new obelisk.CubeColor().getByHorizontalColor(0xAE81FF),
+    new obelisk.CubeColor().getByHorizontalColor(0xE6DB74)
   ]
 
   yearTotal           = 0
@@ -300,12 +302,24 @@ class Iso
         pixelView.renderObject cube, p3d
 
   getSquareColor: (fill) ->
-    color = switch fill.toLowerCase()
-      when 'rgb(238, 238, 238)', '#eeeeee' then COLORS[0]
-      when 'rgb(214, 230, 133)', '#d6e685', 'rgb(255, 238, 74)', '#ffee4a' then COLORS[1]
-      when 'rgb(140, 198, 101)', '#8cc665', 'rgb(255, 197, 1)',  '#ffc501' then COLORS[2]
-      when 'rgb(68, 163, 64)',   '#44a340', 'rgb(254, 150, 0)',  '#fe9600' then COLORS[3]
-      when 'rgb(30, 104, 35)',   '#1e6823', 'rgb(3, 0, 28)',     '#03001c' then COLORS[4]
+    color = undefined
+    color = do ->
+      switch fill.toUpperCase()
+        when '#EEEEEE'
+          return COLORS[0]
+        when '#AE81FF'
+          return COLORS[5]
+        when '#66D9EF'
+          return COLORS[1]
+        when '#E6DB74'
+          return COLORS[6]
+        when '#F92672'
+          return COLORS[2]
+        when '#A6E22E'
+          return COLORS[3]
+        when '#FD971F'
+          return COLORS[4]
+      return
 
   formatDateString: (dateStr, options) ->
     date = null
@@ -347,7 +361,7 @@ pridifyRectangles = ->
       # yellow
       when GH[1]
         rect.setAttribute 'fill', CO[Math.floor(Math.random() * 3)]
-      # purple || pink
+      # purple || yellow || blue
       when GH[2]
         rect.setAttribute 'fill', CO[4]
       # green
@@ -359,3 +373,7 @@ pridifyRectangles = ->
       # purple
     return
   return
+
+pridifyRectangles()
+
+$('.legend').html '<ul class="legend"><li style="background-color: #eee"></li> <li style="background-color: #E6DB74"></li> <li style="background-color: #66D9EF"></li> <li style="background-color: #AE81FF"></li> <li style="background-color: #F92672"></li> <li style="background-color: #A6E22E"></li> <li style="background-color: #FD971F"></li> </ul>'

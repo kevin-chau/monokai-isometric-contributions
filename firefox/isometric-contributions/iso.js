@@ -4,7 +4,7 @@ var Iso, pridifyRectangles;
 Iso = (function() {
   var COLORS, bestDay, contributionsBox, dateOptions, dateWithYearOptions, firstDay, lastDay, maxCount, yearTotal;
 
-  COLORS = [new obelisk.CubeColor().getByHorizontalColor(0xeeeeee), new obelisk.CubeColor().getByHorizontalColor(0xd6e685), new obelisk.CubeColor().getByHorizontalColor(0x8cc665), new obelisk.CubeColor().getByHorizontalColor(0x44a340), new obelisk.CubeColor().getByHorizontalColor(0x1e6823)];
+  COLORS = [new obelisk.CubeColor().getByHorizontalColor(0x272822), new obelisk.CubeColor().getByHorizontalColor(0x66D9EF), new obelisk.CubeColor().getByHorizontalColor(0xF92672), new obelisk.CubeColor().getByHorizontalColor(0xA6E22E), new obelisk.CubeColor().getByHorizontalColor(0xFD971F), new obelisk.CubeColor().getByHorizontalColor(0xAE81FF), new obelisk.CubeColor().getByHorizontalColor(0xE6DB74)];
 
   yearTotal = 0;
 
@@ -278,30 +278,22 @@ Iso = (function() {
 
   Iso.prototype.getSquareColor = function(fill) {
     var color;
+    color = void 0;
     return color = (function() {
-      switch (fill.toLowerCase()) {
-        case 'rgb(238, 238, 238)':
-        case '#eeeeee':
+      switch (fill.toUpperCase()) {
+        case '#EEEEEE':
           return COLORS[0];
-        case 'rgb(214, 230, 133)':
-        case '#d6e685':
-        case 'rgb(255, 238, 74)':
-        case '#ffee4a':
+        case '#AE81FF':
+          return COLORS[5];
+        case '#66D9EF':
           return COLORS[1];
-        case 'rgb(140, 198, 101)':
-        case '#8cc665':
-        case 'rgb(255, 197, 1)':
-        case '#ffc501':
+        case '#E6DB74':
+          return COLORS[6];
+        case '#F92672':
           return COLORS[2];
-        case 'rgb(68, 163, 64)':
-        case '#44a340':
-        case 'rgb(254, 150, 0)':
-        case '#fe9600':
+        case '#A6E22E':
           return COLORS[3];
-        case 'rgb(30, 104, 35)':
-        case '#1e6823':
-        case 'rgb(3, 0, 28)':
-        case '#03001c':
+        case '#FD971F':
           return COLORS[4];
       }
     })();
@@ -352,3 +344,7 @@ pridifyRectangles = function() {
     }
   });
 };
+
+pridifyRectangles();
+
+$('.legend').html('<ul class="legend"><li style="background-color: #eee"></li> <li style="background-color: #E6DB74"></li> <li style="background-color: #66D9EF"></li> <li style="background-color: #AE81FF"></li> <li style="background-color: #F92672"></li> <li style="background-color: #A6E22E"></li> <li style="background-color: #FD971F"></li> </ul>');
